@@ -1,10 +1,13 @@
-﻿using System;
+﻿using RestaurantBooking.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,69 +17,50 @@ namespace RestaurantBooking
 {
     public partial class LoginForm : Form
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=LOWJICHOW\SQLEXPRESS;Initial Catalog=RestaurantBooking;Integrated Security=True;Connect Timeout=30");
-
-        public LoginForm()
+        public MainForm _mainForm;
+        public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
+            _mainForm = mainForm;
         }
-
-        private void textBoxUsername_TextChanged(object sender, EventArgs e)
-        {
-            //login_Username.Text = "";
-        }
-
         private void labelRegister_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm();
+            RegisterForm registerForm = new RegisterForm(_mainForm);
             registerForm.Show();
-            this.Hide();
+            this.Close();
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private async void buttonLogin_Click(object sender, EventArgs e)
         {
-            if (checkConnection())
+            using (var context = new RestaurantBookingDB())
             {
                 try
                 {
-                    connect.Open();
+                    var user = await context.USERs
+                        .FirstOrDefaultAsync(u =>
+                            u.USERNAME == login_Username.Text.Trim() &&
+                            u.PASSWORD == login_Password.Text.Trim());
 
-                    string selectData = "SELECT * FROM USERS WHERE USERNAME = @USERN AND PASSWORD = @PASS";
-
-                    using (SqlCommand cmd = new SqlCommand(selectData, connect))
+                    if (user != null)
                     {
-                        cmd.Parameters.AddWithValue("@USERN", login_Username.Text.Trim());
-                        cmd.Parameters.AddWithValue("@PASS", login_Password.Text.Trim());
-
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        if (dataTable.Rows.Count > 0)
-                        {
-                            MessageBox.Show("Login successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Incorrect username/password or there's no Admin's approval", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("Login successfully!", "Information Message",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _mainForm.SetMainUser(user);
+                        _mainForm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect username/password or there's no Admin's approval",
+                            "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Connection failed: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    connect.Close();
+                    MessageBox.Show($"Error: {ex.Message}", "Error Message",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-        public bool checkConnection()
-        {
-            if (connect.State == ConnectionState.Closed)
-                return true;
-            return false;
         }
 
         private void registerShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -102,6 +86,23 @@ namespace RestaurantBooking
                     login_Password.Text = "";
                     login_Password.ForeColor = System.Drawing.Color.Black;
                 }
+        }
+
+        private void register_Back_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _mainForm.Show();
+
+                //LoginOrSignupControl loginControl = new LoginOrSignupControl(_mainForm);
+                //loginControl.Location = new Point(262, 0);
+                //_mainForm.Controls.Add(loginControl);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error returning to login: " + ex.Message);
+            }
         }
     }
 }

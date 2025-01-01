@@ -8,24 +8,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RestaurantBooking.Entities;
 
 namespace RestaurantBooking
 {
     public partial class MainForm : Form
     {
+        public USER mainUser;
         public MainForm()
         {
             InitializeComponent();
-            MakePictureBoxCircular(pictureBox);
-        }
-        private void MakePictureBoxCircular(PictureBox pictureBox)
-        {
-            // Tạo một hình tròn với kích thước của PictureBox
-            GraphicsPath path = new GraphicsPath();
-            path.AddEllipse(0, 0, pictureBox.Width, pictureBox.Height);
+            Image roundedImage = RoundImage(pictureBox.Image, 200, 200);
 
-            // Áp dụng hình tròn vào thuộc tính Region của PictureBox
-            pictureBox.Region = new Region(path);
+            pictureBox.Image = roundedImage;
+        }
+        public void SetMainUser(USER user)
+        {
+            mainUser = user;
+            wellcome.Text = "Welcome " + (mainUser != null ? mainUser.USERNAME : "Guest");
+        }
+        private Image RoundImage(Image originalImage, int size, int radius)
+        {
+            Bitmap roundedImage = new Bitmap(size, size);
+
+            using (Graphics g = Graphics.FromImage(roundedImage))
+            {
+                GraphicsPath path = new GraphicsPath();
+                path.AddEllipse(0, 0, size, size);
+
+                Region region = new Region(path);
+
+                g.SetClip(region, CombineMode.Replace);
+
+                g.DrawImage(originalImage, new Rectangle(0, 0, size, size));
+            }
+
+            return roundedImage;
         }
         private void Button_MouseEnter(object sender, EventArgs e)
         {
@@ -63,22 +81,57 @@ namespace RestaurantBooking
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
-            LoginForm registerForm = new LoginForm();
+            LoginForm registerForm = new LoginForm(this);
             registerForm.Show();
             this.Hide();
         }
 
         private void pictureBox_Paint(object sender, PaintEventArgs e)
         {
-            int borderWidth = 5; // Độ rộng viền
-            Color borderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177))))); // Màu viền
 
-            using (Pen pen = new Pen(borderColor, borderWidth))
             {
-                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                e.Graphics.DrawEllipse(pen, borderWidth / 2, borderWidth / 2,
-                    pictureBox.Width - borderWidth, pictureBox.Height - borderWidth);
+                int borderWidth = 5;
+                Color borderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177))))); // Màu viền
+
+                using (Pen pen = new Pen(borderColor, borderWidth))
+                {
+                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    e.Graphics.DrawEllipse(pen, borderWidth / 2, borderWidth / 2,
+                        pictureBox.Width - borderWidth, pictureBox.Height - borderWidth);
+                }
             }
+        }
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonProfile_Click(object sender, EventArgs e)
+        {
+            if (mainUser != null)
+            {
+                //profileControl.Visible = true;
+                //loginOrSignupControl.Visible = true;
+                //myReservationsControl.Visible = false;
+            }
+            else
+            {
+                //profileControl.Visible = false;
+                //loginOrSignupControl.Visible = false;
+                //myReservationsControl.Visible = false;
+            }
+        }
+
+        private void buttonReservation_Click(object sender, EventArgs e)
+        {
+            //profileControl.Visible = false;
+            //loginOrSignupControl.Visible = false;
+            //myReservationsControl.Visible = true;
+        }
+
+        private void buttonReview_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

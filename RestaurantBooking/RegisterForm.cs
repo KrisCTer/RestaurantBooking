@@ -1,10 +1,14 @@
-﻿using System;
+﻿using RestaurantBooking.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,93 +19,101 @@ namespace RestaurantBooking
 {
     public partial class RegisterForm : Form
     {
-        // change
-        SqlConnection connect = new SqlConnection(@"Data Source=LOWJICHOW\SQLEXPRESS;Initial Catalog=RestaurantBooking;Integrated Security=True;Connect Timeout=30");
-        public RegisterForm()
+        private MainForm _mainForm;
+        public RegisterForm(MainForm mainForm)
         {
             InitializeComponent();
+            _mainForm = mainForm;
         }
 
         private void labelSignIn_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
+            LoginForm loginForm = new LoginForm(_mainForm);
             loginForm.Show();
-            this.Hide();
+            this.Close();
         }
 
-        private void buttonSignup_Click(object sender, EventArgs e)
+        private async void buttonSignup_Click(object sender, EventArgs e)
         {
-            if (register_Username.Text == "" || register_Password.Text == "" || register_ConfirmPassword.Text == "")
+            if (string.IsNullOrEmpty(register_Username.Text) ||
+                string.IsNullOrEmpty(register_Password.Text) ||
+                string.IsNullOrEmpty(register_Email.Text) ||
+                string.IsNullOrEmpty(register_ConfirmPassword.Text))
             {
                 MessageBox.Show("Please fill all empty fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+
+            using (var context = new RestaurantBookingDB())
             {
-                if (checkConnection())
+                try
                 {
-                    try
-                    {
-                        connect.Open();
+                    string username = register_Username.Text.Trim();
 
-                        string checkUserName = "SELECT * FROM USERS WHERE USERNAME = @USERN";
-                        using (SqlCommand cmd = new SqlCommand(checkUserName, connect))
-                        {
-                            cmd.Parameters.AddWithValue("@USERN", register_Username.Text.Trim());
-                            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
+                    // Check for existing username
+                    bool userExists = await context.USERs
+                        .AnyAsync(u => u.USERNAME == username);
 
-                            if (table.Rows.Count > 0)
-                            {
-                                MessageBox.Show(register_Username.Text.Trim() + " is already taken", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else if (register_Password.Text.Length < 8)
-                            {
-                                MessageBox.Show("Invalid Passsword, at least 8 characters are needed", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else if (register_Password.Text.Trim() != register_ConfirmPassword.Text.Trim())
-                            {
-                                MessageBox.Show("Password does not match", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                string insertData = "INSERT INTO USERS (USERNAME,PASSWORD,ROLE,STATUS,DATE) " +
-                                    "VALUES(@USERN,@PASS,@ROLE,@STATUS,@DATE)";
-                                using (SqlCommand insert = new SqlCommand(insertData, connect))
-                                {
-                                    insert.Parameters.AddWithValue("@USERN", register_Username.Text.Trim());
-                                    insert.Parameters.AddWithValue("@PASS", register_Password.Text.Trim());
-                                    insert.Parameters.AddWithValue("@ROLE", "User");
-                                    insert.Parameters.AddWithValue("@STATUS", "Approval");
-                                    DateTime today = DateTime.Now;
-                                    insert.Parameters.AddWithValue("@DATE", today);
-                                    insert.ExecuteNonQuery();
-                                    MessageBox.Show("Register successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (userExists)
+                    {
+                        MessageBox.Show($"{username} is already taken", "Error Message",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-                                    LoginForm loginForm = new LoginForm();
-                                    loginForm.Show();
-                                    this.Hide();
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
+                    if (register_Password.Text.Length < 8)
                     {
-                        MessageBox.Show("WHart");
-                        MessageBox.Show("Connection failed: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Invalid Password, at least 8 characters are needed",
+                            "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
-                    finally
+
+                    if (register_Password.Text.Trim() != register_ConfirmPassword.Text.Trim())
                     {
-                        connect.Close();
+                        MessageBox.Show("Password does not match", "Error Message",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
+
+                    var newUser = new USER
+                    {
+                        ID_USER = GenerateUserId(),
+                        USERNAME = username,
+                        EMAIL = register_Email.Text.Trim(),
+                        PASSWORD = register_Password.Text.Trim(),
+                        DATE = DateTime.Now
+                    };
+
+                    context.USERs.Add(newUser);
+                    await context.SaveChangesAsync();
+
+                    MessageBox.Show("Register successfully!", "Information Message",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    var loginForm = new LoginForm(_mainForm);
+                    loginForm.Show();
+                    this.Hide();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error Message",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-        public bool checkConnection()
+        public string GenerateUserId()
         {
-            if (connect.State == ConnectionState.Closed)
-                return true;
-            return false;
+            using (var context = new RestaurantBookingDB())
+            {
+                var lastId = context.USERs
+                    .Select(u => u.ID_USER)
+                    .DefaultIfEmpty("U0001")
+                    .Max();
+
+                int currentNumber = int.Parse(lastId.Substring(1));
+                MessageBox.Show($"U{(currentNumber + 1):D4}");
+                return $"U{(currentNumber + 1):D4}";
+            }
         }
 
         private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -125,6 +137,12 @@ namespace RestaurantBooking
                     register_Username.Text = "";
                     register_Username.ForeColor = System.Drawing.Color.Black;
                 }
+            if (sender == register_Email)
+                if (register_Email.Text == "Email")
+                {
+                    register_Email.Text = "";
+                    register_Email.ForeColor = System.Drawing.Color.Black;
+                }
             if (sender == register_Password)
                 if (register_Password.Text == "Password")
                 {
@@ -137,6 +155,13 @@ namespace RestaurantBooking
                     register_ConfirmPassword.Text = "";
                     register_ConfirmPassword.ForeColor = System.Drawing.Color.Black;
                 }
+        }
+
+        private void register_Back_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm(_mainForm);
+            loginForm.Show();
+            this.Close();
         }
     }
 }
