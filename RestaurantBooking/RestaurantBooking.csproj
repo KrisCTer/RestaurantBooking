@@ -166,6 +166,8 @@
   <ItemGroup>
     <None Include="Resources\ethical-hacker.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Remove-bg.ai_1735821230221.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

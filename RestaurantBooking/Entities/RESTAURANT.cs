@@ -25,6 +25,10 @@ namespace RestaurantBooking.Entities
         public string NAME { get; set; }
 
         [Required]
+        [StringLength(255)]
+        public string LOCATION { get; set; }
+
+        [Required]
         [StringLength(15)]
         public string PHONE { get; set; }
 

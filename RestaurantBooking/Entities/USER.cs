@@ -15,8 +15,8 @@ namespace RestaurantBooking.Entities
             PAYMENTs = new HashSet<PAYMENT>();
             RESERVATIONs = new HashSet<RESERVATION>();
         }
+
         [Key]
-        [Required]
         [StringLength(5)]
         public string ID_USER { get; set; }
 

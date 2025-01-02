@@ -40,9 +40,8 @@ namespace RestaurantBooking
             this.buttonLogout = new System.Windows.Forms.Button();
             this.wellcome = new System.Windows.Forms.Label();
             this.panelSystem = new System.Windows.Forms.Panel();
-            this.searchControl1 = new RestaurantBooking.SearchControl();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.searchControl1 = new RestaurantBooking.SearchControl();
             this.panelSystem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +56,7 @@ namespace RestaurantBooking
             this.buttonHome.Font = new System.Drawing.Font("Harlow Solid Italic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonHome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.buttonHome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonHome.Location = new System.Drawing.Point(6, 400);
+            this.buttonHome.Location = new System.Drawing.Point(6, 300);
             this.buttonHome.Name = "buttonHome";
             this.buttonHome.Size = new System.Drawing.Size(338, 100);
             this.buttonHome.TabIndex = 0;
@@ -77,7 +76,7 @@ namespace RestaurantBooking
             this.buttonSearch.Font = new System.Drawing.Font("Harlow Solid Italic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.buttonSearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonSearch.Location = new System.Drawing.Point(6, 500);
+            this.buttonSearch.Location = new System.Drawing.Point(6, 400);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(338, 100);
             this.buttonSearch.TabIndex = 1;
@@ -97,7 +96,7 @@ namespace RestaurantBooking
             this.buttonReservation.Font = new System.Drawing.Font("Harlow Solid Italic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonReservation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.buttonReservation.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonReservation.Location = new System.Drawing.Point(6, 600);
+            this.buttonReservation.Location = new System.Drawing.Point(6, 500);
             this.buttonReservation.Name = "buttonReservation";
             this.buttonReservation.Size = new System.Drawing.Size(338, 100);
             this.buttonReservation.TabIndex = 2;
@@ -117,7 +116,7 @@ namespace RestaurantBooking
             this.buttonReview.Font = new System.Drawing.Font("Harlow Solid Italic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonReview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.buttonReview.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonReview.Location = new System.Drawing.Point(6, 700);
+            this.buttonReview.Location = new System.Drawing.Point(6, 600);
             this.buttonReview.Name = "buttonReview";
             this.buttonReview.Size = new System.Drawing.Size(338, 100);
             this.buttonReview.TabIndex = 3;
@@ -137,7 +136,7 @@ namespace RestaurantBooking
             this.buttonProfile.Font = new System.Drawing.Font("Harlow Solid Italic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.buttonProfile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonProfile.Location = new System.Drawing.Point(6, 800);
+            this.buttonProfile.Location = new System.Drawing.Point(6, 700);
             this.buttonProfile.Name = "buttonProfile";
             this.buttonProfile.Size = new System.Drawing.Size(338, 100);
             this.buttonProfile.TabIndex = 4;
@@ -157,7 +156,7 @@ namespace RestaurantBooking
             this.buttonLogout.Font = new System.Drawing.Font("Harlow Solid Italic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonLogout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.buttonLogout.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonLogout.Location = new System.Drawing.Point(6, 950);
+            this.buttonLogout.Location = new System.Drawing.Point(6, 850);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(338, 100);
             this.buttonLogout.TabIndex = 5;
@@ -172,7 +171,7 @@ namespace RestaurantBooking
             this.wellcome.Font = new System.Drawing.Font("Harlow Solid Italic", 16.2F, System.Drawing.FontStyle.Italic);
             this.wellcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.wellcome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.wellcome.Location = new System.Drawing.Point(30, 350);
+            this.wellcome.Location = new System.Drawing.Point(30, 250);
             this.wellcome.Name = "wellcome";
             this.wellcome.Size = new System.Drawing.Size(197, 35);
             this.wellcome.TabIndex = 7;
@@ -193,34 +192,26 @@ namespace RestaurantBooking
             this.panelSystem.Controls.Add(this.buttonSearch);
             this.panelSystem.Location = new System.Drawing.Point(0, -50);
             this.panelSystem.Name = "panelSystem";
-            this.panelSystem.Size = new System.Drawing.Size(350, 1197);
+            this.panelSystem.Size = new System.Drawing.Size(350, 950);
             this.panelSystem.TabIndex = 1;
-            // 
-            // searchControl1
-            // 
-            this.searchControl1.Location = new System.Drawing.Point(350, 50);
-            this.searchControl1.Name = "searchControl1";
-            this.searchControl1.Size = new System.Drawing.Size(1225, 1100);
-            this.searchControl1.TabIndex = 2;
             // 
             // pictureBox
             // 
-            this.pictureBox.Image = global::RestaurantBooking.Properties.Resources.ethical_hacker;
+            this.pictureBox.Image = global::RestaurantBooking.Properties.Resources.Remove_bg_ai_1735821230221;
             this.pictureBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pictureBox.Location = new System.Drawing.Point(75, 100);
+            this.pictureBox.Location = new System.Drawing.Point(100, 75);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox.Size = new System.Drawing.Size(150, 150);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 8;
             this.pictureBox.TabStop = false;
             // 
-            // panel1
+            // searchControl1
             // 
-            this.panel1.Location = new System.Drawing.Point(350, 0);
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(27)))));
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1225, 50);
-            this.panel1.TabIndex = 0;
+            this.searchControl1.Location = new System.Drawing.Point(350, 0);
+            this.searchControl1.Name = "searchControl1";
+            this.searchControl1.Size = new System.Drawing.Size(1200, 950);
+            this.searchControl1.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -229,12 +220,10 @@ namespace RestaurantBooking
             this.AutoScroll = true;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1582, 1053);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1532, 903);
             this.Controls.Add(this.searchControl1);
             this.Controls.Add(this.panelSystem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Name = "MainForm";
             this.Text = "Restaurant Booking System";
             this.panelSystem.ResumeLayout(false);
@@ -256,7 +245,6 @@ namespace RestaurantBooking
         private Panel panelSystem;
         private SearchControl searchControl1;
         private PictureBox pictureBox;
-        private Panel panel1;
         //private LoginOrSignupControl loginOrSignupControl;
         //private ProfileControl profileControl;
     }

@@ -81,7 +81,7 @@
 
         #endregion
         private System.Windows.Forms.PictureBox PicRes;
-        private System.Windows.Forms.Label txtNameRes;
-        private System.Windows.Forms.Label txtLocationRes;
+        internal System.Windows.Forms.Label txtNameRes;
+        internal System.Windows.Forms.Label txtLocationRes;
     }
 }
