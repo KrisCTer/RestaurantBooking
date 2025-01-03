@@ -48,7 +48,7 @@
             this.txtNameRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNameRes.Location = new System.Drawing.Point(150, 13);
             this.txtNameRes.Name = "txtNameRes";
-            this.txtNameRes.Size = new System.Drawing.Size(298, 39);
+            this.txtNameRes.Size = new System.Drawing.Size(288, 38);
             this.txtNameRes.TabIndex = 2;
             this.txtNameRes.Text = "Name Restaurant";
             // 

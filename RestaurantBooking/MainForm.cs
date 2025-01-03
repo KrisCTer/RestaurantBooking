@@ -18,9 +18,9 @@ namespace RestaurantBooking
         public MainForm()
         {
             InitializeComponent();
-            Image roundedImage = RoundImage(pictureBox.Image, 200, 200);
+            //Image roundedImage = RoundImage(pictureBox.Image, 200, 200);
 
-            pictureBox.Image = roundedImage;
+            //pictureBox.Image = roundedImage;
         }
         public void SetMainUser(USER user)
         {
@@ -132,6 +132,11 @@ namespace RestaurantBooking
         private void buttonReview_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox_DoubleClick(object sender, EventArgs e)
+        {
+            InitializeComponent();
         }
     }
 }

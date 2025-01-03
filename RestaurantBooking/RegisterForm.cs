@@ -50,7 +50,6 @@ namespace RestaurantBooking
                 {
                     string username = register_Username.Text.Trim();
 
-                    // Check for existing username
                     bool userExists = await context.USERs
                         .AnyAsync(u => u.USERNAME == username);
 

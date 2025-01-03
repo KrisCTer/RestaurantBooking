@@ -41,9 +41,12 @@ namespace RestaurantBooking
             this.wellcome = new System.Windows.Forms.Label();
             this.panelSystem = new System.Windows.Forms.Panel();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.searchControl1 = new RestaurantBooking.SearchControl();
             this.panelSystem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonHome
@@ -183,6 +186,7 @@ namespace RestaurantBooking
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelSystem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(27)))));
             this.panelSystem.Controls.Add(this.pictureBox);
+            this.panelSystem.Controls.Add(this.panel1);
             this.panelSystem.Controls.Add(this.buttonLogout);
             this.panelSystem.Controls.Add(this.wellcome);
             this.panelSystem.Controls.Add(this.buttonProfile);
@@ -192,7 +196,7 @@ namespace RestaurantBooking
             this.panelSystem.Controls.Add(this.buttonSearch);
             this.panelSystem.Location = new System.Drawing.Point(0, -50);
             this.panelSystem.Name = "panelSystem";
-            this.panelSystem.Size = new System.Drawing.Size(350, 950);
+            this.panelSystem.Size = new System.Drawing.Size(350, 969);
             this.panelSystem.TabIndex = 1;
             // 
             // pictureBox
@@ -205,13 +209,29 @@ namespace RestaurantBooking
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 8;
             this.pictureBox.TabStop = false;
+            this.pictureBox.DoubleClick += new System.EventHandler(this.pictureBox_DoubleClick);
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(350, 50);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1150, 972);
+            this.panel1.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.searchControl1);
+            this.panel2.Location = new System.Drawing.Point(350, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1200, 900);
+            this.panel2.TabIndex = 2;
             // 
             // searchControl1
             // 
-            this.searchControl1.Location = new System.Drawing.Point(350, 0);
+            this.searchControl1.Location = new System.Drawing.Point(0, 0);
             this.searchControl1.Name = "searchControl1";
             this.searchControl1.Size = new System.Drawing.Size(1200, 950);
-            this.searchControl1.TabIndex = 2;
+            this.searchControl1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -221,7 +241,7 @@ namespace RestaurantBooking
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1532, 903);
-            this.Controls.Add(this.searchControl1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelSystem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
@@ -229,6 +249,7 @@ namespace RestaurantBooking
             this.panelSystem.ResumeLayout(false);
             this.panelSystem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -243,8 +264,10 @@ namespace RestaurantBooking
         private Button buttonLogout;
         private Label wellcome;
         private Panel panelSystem;
-        private SearchControl searchControl1;
         private PictureBox pictureBox;
+        private Panel panel1;
+        private Panel panel2;
+        private SearchControl searchControl1;
         //private LoginOrSignupControl loginOrSignupControl;
         //private ProfileControl profileControl;
     }

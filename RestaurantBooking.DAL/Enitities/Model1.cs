@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
-namespace RestaurantBooking.Entities
+namespace RestaurantBooking.DAL.Enitities
 {
-    public partial class RestaurantBookingDB : DbContext
+    public partial class Model1 : DbContext
     {
-        public RestaurantBookingDB()
+        public Model1()
             : base("name=RestaurantBookingDB")
         {
         }

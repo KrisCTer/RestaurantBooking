@@ -33,20 +33,16 @@ namespace RestaurantBooking
         {
             try
             {
-
                 using (var context = new RestaurantBookingDB())
                 {
                     List<RESTAURANT> restaurants = context.RESTAURANTs.ToList();
-
+                    CountRes.Text = restaurants.Count.ToString() + " Restaurants";
                     foreach (RESTAURANT restaurant in restaurants)
                     {
                         RestaurentsControl restaurantControl = new RestaurentsControl();
 
                         restaurantControl.txtNameRes.Text = restaurant.NAME;
                         restaurantControl.txtLocationRes.Text = restaurant.LOCATION;
-
-                        //restaurantControl.Width = panelRes.Width - 20;
-                        //restaurantControl.Margin = new Padding(10);
 
                         panelRes.Controls.Add(restaurantControl);
                     }
@@ -68,5 +64,22 @@ namespace RestaurantBooking
                 }
             }
         }
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string filterText = txtSearch.Text.Trim().ToLower();
+            foreach (Control control in panelRes.Controls)
+            {
+                var txtNameRes = control.Controls.Find("txtNameRes", true).FirstOrDefault();
+                control.Visible = txtNameRes != null &&
+                                 txtNameRes.Text.ToLower().Contains(filterText);
+            }
+        }
+
+        private void panel2_DoubleClick(object sender, EventArgs e)
+        {
+            bookingDate bookingDate = new bookingDate();
+            bookingDate.Show();
+        }
     }
 }
+

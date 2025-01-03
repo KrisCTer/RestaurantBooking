@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,6 +57,8 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -60,6 +77,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,16 +87,17 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\CANCELLATION.cs" />
-    <Compile Include="Entities\MENUITEM.cs" />
-    <Compile Include="Entities\RestaurantBookingDB.cs" />
-    <Compile Include="Entities\PAYMENT.cs" />
-    <Compile Include="Entities\RESERVATION.cs" />
-    <Compile Include="Entities\RESTAURANT.cs" />
-    <Compile Include="Entities\SERVICE.cs" />
-    <Compile Include="Entities\USER.cs" />
+    <Compile Include="bookingDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bookingDate.Designer.cs">
+      <DependentUpon>bookingDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasswordHelper.cs" />
     <Compile Include="ProfileControl.cs">
       <SubType>UserControl</SubType>
@@ -123,6 +142,24 @@
     <Compile Include="SearchControl.Designer.cs">
       <DependentUpon>SearchControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyRevervationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyRevervationControl.Designer.cs">
+      <DependentUpon>MyRevervationControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyResCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyResCard.Designer.cs">
+      <DependentUpon>MyResCard.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="bookingDate.resx">
+      <DependentUpon>bookingDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyResCard.resx">
+      <DependentUpon>MyResCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProfileControl.resx">
       <DependentUpon>ProfileControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +183,9 @@
     <EmbeddedResource Include="SearchControl.resx">
       <DependentUpon>SearchControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyRevervationControl.resx">
+      <DependentUpon>MyRevervationControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -168,6 +208,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Remove-bg.ai_1735821230221.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RestaurantBooking.BUS\RestaurantBooking.BUS.csproj">
+      <Project>{54556b4f-68e5-4ac9-8ad2-ff34b63280c6}</Project>
+      <Name>RestaurantBooking.BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RestaurantBooking.DAL\RestaurantBooking.DAL.csproj">
+      <Project>{9d73e180-8182-41fb-bb6e-f1b8f75190d4}</Project>
+      <Name>RestaurantBooking.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

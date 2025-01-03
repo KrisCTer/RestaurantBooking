@@ -1,4 +1,4 @@
-namespace RestaurantBooking.Entities
+namespace RestaurantBooking.DAL.Enitities
 {
     using System;
     using System.Collections.Generic;

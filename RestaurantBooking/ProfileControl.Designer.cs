@@ -230,7 +230,7 @@
             // Profile_Save
             // 
             this.Profile_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Profile_Save.Location = new System.Drawing.Point(670, 900);
+            this.Profile_Save.Location = new System.Drawing.Point(670, 850);
             this.Profile_Save.Name = "Profile_Save";
             this.Profile_Save.Size = new System.Drawing.Size(205, 50);
             this.Profile_Save.TabIndex = 25;
@@ -271,7 +271,7 @@
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.panel1);
             this.Name = "ProfileControl";
-            this.Size = new System.Drawing.Size(1200, 1100);
+            this.Size = new System.Drawing.Size(1200, 950);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
