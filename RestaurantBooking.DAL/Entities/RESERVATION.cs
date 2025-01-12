@@ -9,12 +9,6 @@ namespace RestaurantBooking.DAL.Entities
     [Table("RESERVATION")]
     public partial class RESERVATION
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RESERVATION()
-        {
-            CANCELLATIONs = new HashSet<CANCELLATION>();
-        }
-
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -36,9 +30,6 @@ namespace RestaurantBooking.DAL.Entities
 
         [StringLength(255)]
         public string NOTE { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CANCELLATION> CANCELLATIONs { get; set; }
 
         public virtual RESTAURANT RESTAURANT { get; set; }
 

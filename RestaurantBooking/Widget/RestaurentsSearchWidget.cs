@@ -12,10 +12,10 @@ using RestaurantBooking.DAL.Entities;
 
 namespace RestaurantBooking.Widget
 {
-    public partial class RestaurentsSearchControl : UserControl
+    public partial class RestaurentsSearchWidget : UserControl
     {
         private RESTAURANT _mainRes;
-        public RestaurentsSearchControl()
+        public RestaurentsSearchWidget()
         {
             InitializeComponent();
         }
@@ -51,7 +51,7 @@ namespace RestaurantBooking.Widget
                 }
 
                 // Kiểm tra sender là RestaurantControl và Tag có phải là RESTAURANT
-                if (sender is RestaurentsSearchControl control)
+                if (sender is RestaurentsSearchWidget control)
                 {
                     if (control.Tag is RESTAURANT selectedRestaurant)
                     {

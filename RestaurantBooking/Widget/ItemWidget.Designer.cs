@@ -1,6 +1,6 @@
 ﻿namespace RestaurantBooking
 {
-    partial class ItemControl
+    partial class ItemWidget
     {
         /// <summary> 
         /// Required designer variable.

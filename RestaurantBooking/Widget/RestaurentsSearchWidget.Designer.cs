@@ -1,6 +1,6 @@
 ﻿namespace RestaurantBooking.Widget
 {
-    partial class RestaurentsSearchControl
+    partial class RestaurentsSearchWidget
     {
         /// <summary> 
         /// Required designer variable.
@@ -62,15 +62,15 @@
             this.txtLocationRes.TabIndex = 3;
             this.txtLocationRes.Text = "Location";
             // 
-            // RestaurentsSearchControl
+            // RestaurentsSearchWidget
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.LemonChiffon;
             this.Controls.Add(this.txtLocationRes);
             this.Controls.Add(this.txtNameRes);
             this.Controls.Add(this.PicRes);
-            this.Name = "RestaurentsSearchControl";
+            this.Name = "RestaurentsSearchWidget";
             this.Size = new System.Drawing.Size(1100, 125);
             this.Tag = "";
             this.Load += new System.EventHandler(this.RestaurentsControl_Load);

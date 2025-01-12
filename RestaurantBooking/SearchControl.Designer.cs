@@ -196,7 +196,7 @@ namespace RestaurantBooking
             this.buttonAtmosphere.TabIndex = 10;
             this.buttonAtmosphere.Text = "Atmosphere";
             this.buttonAtmosphere.UseVisualStyleBackColor = true;
-            this.buttonAtmosphere.Click += new System.EventHandler(this.buttonAtmosphere_Click);
+            this.buttonAtmosphere.Click += new System.EventHandler(this.buttonFill_Click);
             // 
             // buttonPrice
             // 
@@ -208,7 +208,7 @@ namespace RestaurantBooking
             this.buttonPrice.TabIndex = 9;
             this.buttonPrice.Text = "Price";
             this.buttonPrice.UseVisualStyleBackColor = true;
-            this.buttonPrice.Click += new System.EventHandler(this.buttonPrice_Click);
+            this.buttonPrice.Click += new System.EventHandler(this.buttonFill_Click);
             // 
             // buttonCancelCalendar
             // 
@@ -258,6 +258,7 @@ namespace RestaurantBooking
             this.buttonCancel.Text = "X";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Visible = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonRegion
             // 
@@ -269,7 +270,7 @@ namespace RestaurantBooking
             this.buttonRegion.TabIndex = 8;
             this.buttonRegion.Text = "Region";
             this.buttonRegion.UseVisualStyleBackColor = true;
-            this.buttonRegion.Click += new System.EventHandler(this.buttonRegion_Click);
+            this.buttonRegion.Click += new System.EventHandler(this.buttonFill_Click);
             // 
             // SearchControl
             // 
@@ -313,8 +314,8 @@ namespace RestaurantBooking
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonCancelSearch;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.Button buttonAtmosphere;
-        private System.Windows.Forms.Button buttonPrice;
-        private System.Windows.Forms.Button buttonRegion;
+        internal System.Windows.Forms.Button buttonAtmosphere;
+        internal System.Windows.Forms.Button buttonPrice;
+        internal System.Windows.Forms.Button buttonRegion;
     }
 }

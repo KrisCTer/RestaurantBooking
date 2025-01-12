@@ -32,7 +32,5 @@ namespace RestaurantBooking.DAL.Entities
         [Column(Order = 3)]
         [StringLength(5)]
         public string ID_USER { get; set; }
-
-        public virtual RESERVATION RESERVATION { get; set; }
     }
 }

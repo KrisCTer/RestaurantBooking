@@ -79,9 +79,10 @@ namespace RestaurantBooking
             {
                 loginOrSignupControl.Visible = true;
                 homeControl.Visible = false;
+                homeControl.StopTimerHome();
                 searchControl.Visible = false;
                 myRevervationControl.Visible = false;
-
+                reviewControl.Visible = false;
                 profileControl.Visible = false;
             }
             else
@@ -89,10 +90,11 @@ namespace RestaurantBooking
                 if (sender == buttonHome)
                 {
                     loginOrSignupControl.Visible = false;
+                    homeControl.StartTimerHome();
                     homeControl.Visible = true;
                     searchControl.Visible = false;
                     myRevervationControl.Visible = false;
-
+                    reviewControl.Visible = false;
                     profileControl.Visible = false;
                     restaurantControl.Visible = false;
                 }
@@ -100,10 +102,11 @@ namespace RestaurantBooking
                 {
                     loginOrSignupControl.Visible = false;
                     homeControl.Visible = false;
+                    homeControl.StopTimerHome();
                     searchControl.RefreshSearchData();
                     searchControl.Visible = true;
                     myRevervationControl.Visible = false;
-
+                    reviewControl.Visible = false;
                     profileControl.Visible = false;
                     restaurantControl.Visible = false;
                 }
@@ -111,10 +114,11 @@ namespace RestaurantBooking
                 {
                     loginOrSignupControl.Visible = false;
                     homeControl.Visible = false;
+                    homeControl.StopTimerHome();
                     searchControl.Visible = false;
                     myRevervationControl.RefreshReservationData();
                     myRevervationControl.Visible = true;
-
+                    reviewControl.Visible = false;
                     profileControl.Visible = false;
                     restaurantControl.Visible = false;
                 }
@@ -122,9 +126,11 @@ namespace RestaurantBooking
                 {
                     loginOrSignupControl.Visible = false;
                     homeControl.Visible = false;
+                    homeControl.StopTimerHome();
                     searchControl.Visible = false;
                     myRevervationControl.Visible = false;
-
+                    reviewControl.RefreshReviewData();
+                    reviewControl.Visible = true;
                     profileControl.Visible = false;
                     restaurantControl.Visible = false;
                 }
@@ -132,9 +138,10 @@ namespace RestaurantBooking
                 {
                     loginOrSignupControl.Visible = false;
                     homeControl.Visible = false;
+                    homeControl.StopTimerHome();
                     searchControl.Visible = false;
                     myRevervationControl.Visible = false;
-
+                    reviewControl.Visible = false;
                     profileControl.RefreshProfileData();
                     profileControl.Visible = true;
                     restaurantControl.Visible = false;
@@ -160,11 +167,21 @@ namespace RestaurantBooking
                 loginOrSignupControl.Visible = true;
                 homeControl.Visible = false;
                 searchControl.Visible = false;
-                //searchControl.
                 myRevervationControl.Visible = false;
-
+                reviewControl.Visible = false;
                 profileControl.Visible = false;
             }
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+            if (_mainUser != null)
+                loginOrSignupControl.Visible = false;
+            homeControl.Visible = true;
+            searchControl.Visible = false;
+            myRevervationControl.Visible = false;
+            reviewControl.Visible = false;
+            profileControl.Visible = false;
         }
     }
 }

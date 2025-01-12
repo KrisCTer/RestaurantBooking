@@ -44,10 +44,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Profile_Birthday = new System.Windows.Forms.DateTimePicker();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.Profile_Save = new System.Windows.Forms.Button();
             this.Profile_Phone = new System.Windows.Forms.TextBox();
             this.labelPhone = new System.Windows.Forms.Label();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -229,18 +229,6 @@
             this.Profile_Birthday.Size = new System.Drawing.Size(500, 38);
             this.Profile_Birthday.TabIndex = 24;
             // 
-            // pictureBox
-            // 
-            this.pictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox.Image = global::RestaurantBooking.Properties.Resources.user;
-            this.pictureBox.Location = new System.Drawing.Point(100, 120);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox.TabIndex = 7;
-            this.pictureBox.TabStop = false;
-            this.pictureBox.DoubleClick += new System.EventHandler(this.pictureBox_DoubleClick);
-            // 
             // Profile_Save
             // 
             this.Profile_Save.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -270,6 +258,18 @@
             this.labelPhone.Size = new System.Drawing.Size(83, 29);
             this.labelPhone.TabIndex = 26;
             this.labelPhone.Text = "Phone";
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox.Image = global::RestaurantBooking.Properties.Resources.user;
+            this.pictureBox.Location = new System.Drawing.Point(100, 120);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox.TabIndex = 7;
+            this.pictureBox.TabStop = false;
+            this.pictureBox.DoubleClick += new System.EventHandler(this.pictureBox_DoubleClick);
             // 
             // ProfileControl
             // 

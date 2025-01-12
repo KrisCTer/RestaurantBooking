@@ -95,11 +95,11 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bookingDate.cs">
+    <Compile Include="BookingDate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="bookingDate.Designer.cs">
-      <DependentUpon>bookingDate.cs</DependentUpon>
+    <Compile Include="BookingDate.Designer.cs">
+      <DependentUpon>BookingDate.cs</DependentUpon>
     </Compile>
     <Compile Include="ConfirmBooking.cs">
       <SubType>UserControl</SubType>
@@ -119,11 +119,17 @@
     <Compile Include="Confirm.Designer.cs">
       <DependentUpon>Confirm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Region.cs">
+    <Compile Include="ReviewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReviewControl.Designer.cs">
+      <DependentUpon>ReviewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Region.Designer.cs">
-      <DependentUpon>Region.cs</DependentUpon>
+    <Compile Include="SearchResult.Designer.cs">
+      <DependentUpon>SearchResult.cs</DependentUpon>
     </Compile>
     <Compile Include="HomeControl.cs">
       <SubType>UserControl</SubType>
@@ -187,26 +193,32 @@
     <Compile Include="ProfileControl.Designer.cs">
       <DependentUpon>ProfileControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Widget\ItemControl.cs">
+    <Compile Include="Widget\ItemWidget.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Widget\ItemControl.Designer.cs">
-      <DependentUpon>ItemControl.cs</DependentUpon>
+    <Compile Include="Widget\ItemWidget.Designer.cs">
+      <DependentUpon>ItemWidget.cs</DependentUpon>
     </Compile>
-    <Compile Include="Widget\RestaurentsSearchControl.cs">
+    <Compile Include="Widget\RestaurentsSearchWidget.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Widget\RestaurentsSearchControl.Designer.cs">
-      <DependentUpon>RestaurentsSearchControl.cs</DependentUpon>
+    <Compile Include="Widget\RestaurentsSearchWidget.Designer.cs">
+      <DependentUpon>RestaurentsSearchWidget.cs</DependentUpon>
     </Compile>
-    <Compile Include="Widget\RevervationRestaurant.cs">
+    <Compile Include="Widget\ReservationWidget.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Widget\RevervationRestaurant.Designer.cs">
-      <DependentUpon>RevervationRestaurant.cs</DependentUpon>
+    <Compile Include="Widget\ReservationWidget.Designer.cs">
+      <DependentUpon>ReservationWidget.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="bookingDate.resx">
-      <DependentUpon>bookingDate.cs</DependentUpon>
+    <Compile Include="Widget\ReviewWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widget\ReviewWidget.Designer.cs">
+      <DependentUpon>ReviewWidget.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BookingDate.resx">
+      <DependentUpon>BookingDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmBooking.resx">
       <DependentUpon>ConfirmBooking.cs</DependentUpon>
@@ -217,8 +229,11 @@
     <EmbeddedResource Include="Confirm.resx">
       <DependentUpon>Confirm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Region.resx">
-      <DependentUpon>Region.cs</DependentUpon>
+    <EmbeddedResource Include="ReviewControl.resx">
+      <DependentUpon>ReviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchResult.resx">
+      <DependentUpon>SearchResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomeControl.resx">
       <DependentUpon>HomeControl.cs</DependentUpon>
@@ -252,14 +267,17 @@
     <EmbeddedResource Include="MyRevervationControl.resx">
       <DependentUpon>MyRevervationControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Widget\ItemControl.resx">
-      <DependentUpon>ItemControl.cs</DependentUpon>
+    <EmbeddedResource Include="Widget\ItemWidget.resx">
+      <DependentUpon>ItemWidget.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Widget\RestaurentsSearchControl.resx">
-      <DependentUpon>RestaurentsSearchControl.cs</DependentUpon>
+    <EmbeddedResource Include="Widget\RestaurentsSearchWidget.resx">
+      <DependentUpon>RestaurentsSearchWidget.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Widget\RevervationRestaurant.resx">
-      <DependentUpon>RevervationRestaurant.cs</DependentUpon>
+    <EmbeddedResource Include="Widget\ReservationWidget.resx">
+      <DependentUpon>ReservationWidget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widget\ReviewWidget.resx">
+      <DependentUpon>ReviewWidget.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -307,6 +325,12 @@
     <None Include="Resources\default_image.jpg" />
     <None Include="Resources\LogoApp.png" />
     <None Include="Resources\calendar.png" />
+    <None Include="Resources\Bia.jpg" />
+    <None Include="Resources\Pic1.jpg" />
+    <None Include="Resources\Pic2.jpg" />
+    <None Include="Resources\Pic3.jpg" />
+    <None Include="Resources\Pic4.jpg" />
+    <None Include="Resources\Pic5.jpg" />
     <Content Include="Resources\RES0000001.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace RestaurantBooking
 {
-    partial class bookingDate
+    partial class BookingDate
     {
         /// <summary>
         /// Required designer variable.
@@ -47,6 +47,9 @@ namespace RestaurantBooking
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.flpTime = new System.Windows.Forms.FlowLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -108,21 +111,26 @@ namespace RestaurantBooking
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnCount = 7;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.Controls.Add(this.label6, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.select_Date, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.select_Time, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.select_People, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.buttonCancel, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonCancel, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.select_People, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.select_Time, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(962, 100);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
@@ -131,10 +139,11 @@ namespace RestaurantBooking
             this.select_Date.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.select_Date.AutoSize = true;
             this.select_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.select_Date.Location = new System.Drawing.Point(264, 34);
+            this.select_Date.Location = new System.Drawing.Point(201, 34);
             this.select_Date.Name = "select_Date";
-            this.select_Date.Size = new System.Drawing.Size(0, 32);
+            this.select_Date.Size = new System.Drawing.Size(30, 32);
             this.select_Date.TabIndex = 0;
+            this.select_Date.Text = "0";
             this.select_Date.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // select_Time
@@ -142,10 +151,11 @@ namespace RestaurantBooking
             this.select_Time.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.select_Time.AutoSize = true;
             this.select_Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.select_Time.Location = new System.Drawing.Point(504, 34);
+            this.select_Time.Location = new System.Drawing.Point(489, 34);
             this.select_Time.Name = "select_Time";
-            this.select_Time.Size = new System.Drawing.Size(0, 32);
+            this.select_Time.Size = new System.Drawing.Size(30, 32);
             this.select_Time.TabIndex = 1;
+            this.select_Time.Text = "0";
             this.select_Time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // select_People
@@ -153,19 +163,20 @@ namespace RestaurantBooking
             this.select_People.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.select_People.AutoSize = true;
             this.select_People.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.select_People.Location = new System.Drawing.Point(744, 34);
+            this.select_People.Location = new System.Drawing.Point(777, 34);
             this.select_People.Name = "select_People";
-            this.select_People.Size = new System.Drawing.Size(0, 32);
+            this.select_People.Size = new System.Drawing.Size(30, 32);
             this.select_People.TabIndex = 2;
+            this.select_People.Text = "0";
             this.select_People.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancel.Location = new System.Drawing.Point(868, 28);
+            this.buttonCancel.Location = new System.Drawing.Point(867, 3);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(90, 44);
+            this.buttonCancel.Size = new System.Drawing.Size(92, 94);
             this.buttonCancel.TabIndex = 4;
             this.buttonCancel.Text = "X";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -228,6 +239,42 @@ namespace RestaurantBooking
             this.flpTime.Size = new System.Drawing.Size(317, 231);
             this.flpTime.TabIndex = 3;
             // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(35, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 32);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Date";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(321, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 32);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Time";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(596, 34);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(104, 32);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "People";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // bookingDate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -270,5 +317,8 @@ namespace RestaurantBooking
         private Button btbCheck;
         private TableLayoutPanel tableLayoutPanel1;
         private Button buttonCancel;
+        public Label label6;
+        public Label label5;
+        public Label label4;
     }
 }

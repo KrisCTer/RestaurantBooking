@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace RestaurantBooking
 {
-    public partial class bookingDate : Form
+    public partial class BookingDate : Form
     {
         private bool isSaved = false;
-        public bookingDate()
+        public BookingDate()
         {
             InitializeComponent();
         }
@@ -40,7 +40,7 @@ namespace RestaurantBooking
 
                 btn.Click += (sender, e) =>
                 {
-                    select_Time.Text = $"Time {btn.Text}";
+                    select_Time.Text = $"{btn.Text}";
                     buttonCancel.Visible = true;
                 };
 
@@ -61,7 +61,7 @@ namespace RestaurantBooking
             {
                 // Tạo nút mới
                 Button btn = new Button();
-                btn.Text = $"{i} People";
+                btn.Text = $"{i}";
                 btn.Size = new Size(buttonWidth, buttonHeight);
                 btn.Location = new Point(x, y);
 
@@ -69,7 +69,7 @@ namespace RestaurantBooking
                 btn.Click += (sender, e) =>
                 {
                     string number = btn.Text.Split(' ')[0];
-                    select_People.Text = $"People {number}";
+                    select_People.Text = $"{number}";
                     buttonCancel.Visible = true;
                 };
 
@@ -82,15 +82,15 @@ namespace RestaurantBooking
         {
             AddTimeButtonsToPanel(flpTime);
             AddPersonButtonsToPanel(flpPeople);
-            select_Date.Text = "Date " + DateTime.Now.ToString("dd-MM");
-            select_Time.Text = "Time " + DateTime.Now.ToString("HH:mm");
-            select_People.Text = "People 2";
+            select_Date.Text = DateTime.Now.ToString("dd-MM");
+            select_Time.Text = DateTime.Now.ToString("HH:mm");
+            select_People.Text = "2";
             this.monthCalendar.MinDate = DateTime.Now;
         }
 
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
-            select_Date.Text = "Date " + monthCalendar.SelectionStart.ToString("dd-MM");
+            select_Date.Text = monthCalendar.SelectionStart.ToString("dd-MM");
             buttonCancel.Visible = true;
         }
 
@@ -125,17 +125,17 @@ namespace RestaurantBooking
             }
             else if (result == DialogResult.No)
             {
-                select_Date.Text = "Date " + DateTime.Now.ToString("dd-MM");
-                select_Time.Text = "Time " + DateTime.Now.ToString("HH:mm");
-                select_People.Text = "People 2";
+                select_Date.Text = DateTime.Now.ToString("dd-MM");
+                select_Time.Text = DateTime.Now.ToString("HH:mm");
+                select_People.Text = "2";
             }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
-        {            
-            select_Date.Text = "Date " + DateTime.Now.ToString("dd-MM");
-            select_Time.Text = "Time " + DateTime.Now.ToString("HH:mm");
-            select_People.Text = "People 2";
+        {
+            select_Date.Text = DateTime.Now.ToString("dd-MM");
+            select_Time.Text = DateTime.Now.ToString("HH:mm");
+            select_People.Text = "2";
             monthCalendar.SetDate(DateTime.Now);
             buttonCancel.Visible = false;
         }

@@ -47,12 +47,6 @@ namespace RestaurantBooking.DAL.Entities
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<RESERVATION>()
-                .HasMany(e => e.CANCELLATIONs)
-                .WithRequired(e => e.RESERVATION)
-                .HasForeignKey(e => new { e.ID_RESERVATION, e.ID_RES, e.ID_USER })
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<RESTAURANT>()
                 .Property(e => e.ID_RES)
                 .IsFixedLength()

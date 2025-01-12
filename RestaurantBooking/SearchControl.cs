@@ -39,7 +39,7 @@ namespace RestaurantBooking
 
                 foreach (RESTAURANT restaurant in restaurants)
                 {
-                    RestaurentsSearchControl restaurantControl = new RestaurentsSearchControl();
+                    RestaurentsSearchWidget restaurantControl = new RestaurentsSearchWidget();
 
                     restaurantControl.txtNameRes.Text = restaurant.NAME;
                     restaurantControl.txtLocationRes.Text = restaurant.LOCATION;
@@ -62,7 +62,7 @@ namespace RestaurantBooking
         {
             foreach (Control control in panelRes.Controls)
             {
-                if (control is RestaurentsSearchControl)
+                if (control is RestaurentsSearchWidget)
                 {
                     control.Width = panelRes.Width - 20;
                 }
@@ -76,7 +76,7 @@ namespace RestaurantBooking
                 var txtNameRes = control.Controls.Find("txtNameRes", true).FirstOrDefault();
                 control.Visible = txtNameRes != null &&
                                      txtNameRes.Text.ToLower().Contains(filterText);
-                CountRes.Text = panelRes.Controls.OfType<RestaurentsSearchControl>()
+                CountRes.Text = panelRes.Controls.OfType<RestaurentsSearchWidget>()
                     .Count(c => c.Visible).ToString() + " Restaurants";
             }
             buttonCancelSearch.Visible = !string.IsNullOrEmpty(filterText);
@@ -84,7 +84,7 @@ namespace RestaurantBooking
 
         private void panel_DoubleClick(object sender, EventArgs e)
         {
-            bookingDate bookingDate = new bookingDate();
+            BookingDate bookingDate = new BookingDate();
             bookingDate.ShowDialog();
             MyReservations_Date.Text = bookingDate.select_Date.Text;
             MyReservations_People.Text = bookingDate.select_People.Text;
@@ -120,8 +120,57 @@ namespace RestaurantBooking
                 }
             }
 
-            CountRes.Text = $"{panelRes.Controls.OfType<RestaurentsSearchControl>().Count(c => c.Visible)} Restaurants";
+            CountRes.Text = $"{panelRes.Controls.OfType<RestaurentsSearchWidget>().Count(c => c.Visible)} Restaurants";
         }
+        private void FilterControlsOnPanelRes(SearchResult searchResult)
+        {
+            foreach (Control control in panelRes.Controls)
+            {
+                if (control.Tag is RESTAURANT restaurant)
+                {
+                    bool isVisible = true;
+
+                    // Lọc theo Location
+                    if (searchResult.SelectedLocations.Any())
+                    {
+                        isVisible = isVisible && searchResult.SelectedLocations.Contains(restaurant.LOCATION);
+                    }
+
+                    // Lọc theo Price
+                    if (searchResult.MinPrice > 0 || searchResult.MaxPrice < 1000)
+                    {
+                        double restaurantPrice = restaurant.PRICE.GetValueOrDefault(); // Sử dụng giá từ RESTAURANT object
+                        isVisible = isVisible && (restaurantPrice >= searchResult.MinPrice && restaurantPrice <= searchResult.MaxPrice);
+                    }
+
+                    // Lọc theo Services (Atmosphere)
+                    if (searchResult.SelectedServices.Any())
+                    {
+                        bool hasMatchingService = false;
+                        foreach (string selectedService in searchResult.SelectedServices)
+                        {
+                            // Giả sử RESTAURANT có property SERVICES là List<string> hoặc có quan hệ với bảng SERVICE
+                            if (restaurant.SERVICEs.Any(s => s.NAME_SER == selectedService))
+                            {
+                                hasMatchingService = true;
+                                break;
+                            }
+                        }
+                        isVisible = isVisible && hasMatchingService;
+                    }
+                    control.Visible = isVisible;
+                }
+                else
+                {
+                    control.Visible = false;
+                }
+            }
+
+            // Cập nhật số lượng nhà hàng hiển thị
+            CountRes.Text = $"{panelRes.Controls.Cast<Control>().Count(c => c.Visible)} Restaurants";
+            buttonCancel.Visible = searchResult.SelectedLocations.Any() || searchResult.SelectedServices.Any() || searchResult.MinPrice > 0 || searchResult.MaxPrice < 1000;
+        }
+
         public void RefreshSearchData()
         {
             if (MainForm._mainUser != null)
@@ -135,12 +184,17 @@ namespace RestaurantBooking
         {
             RefreshSearchData();
             buttonCancelCalendar.Visible = false;
+            buttonCancel.Visible = false;
         }
         private void setDefault()
         {
             MyReservations_Date.Text = "Date " + DateTime.Now.ToString("dd-MM");
             MyReservations_Time.Text = "Time " + DateTime.Now.ToString("HH:mm");
             MyReservations_People.Text = "People 2";
+            txtSearch.Text = "";
+            buttonCancelSearch.Visible = false;
+            buttonCancel.Visible = false;
+            buttonCancelCalendar.Visible = false;
         }
 
         private void buttonCancelSearch_Click(object sender, EventArgs e)
@@ -149,19 +203,12 @@ namespace RestaurantBooking
             buttonCancelSearch.Visible = false;
         }
 
-        private void buttonRegion_Click(object sender, EventArgs e)
+        private void buttonFill_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void buttonPrice_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonAtmosphere_Click(object sender, EventArgs e)
-        {
-
+            var searchResult = new SearchResult();
+            searchResult._mainButton = sender as Button;
+            searchResult.ShowDialog();
+            FilterControlsOnPanelRes(searchResult);
         }
     }
 }

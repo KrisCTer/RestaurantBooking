@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantBooking
+namespace RestaurantBooking.Widget
 {
-    public partial class ItemControl : UserControl
+    public partial class ReviewWidget : UserControl
     {
-        public ItemControl()
+        public ReviewWidget()
         {
             InitializeComponent();
         }

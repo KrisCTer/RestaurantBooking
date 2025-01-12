@@ -41,7 +41,6 @@ namespace RestaurantBooking
             this.wellcome = new System.Windows.Forms.Label();
             this.panelSystem = new System.Windows.Forms.Panel();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl = new System.Windows.Forms.Panel();
             this.loginOrSignupControl = new RestaurantBooking.LoginOrSignupControl();
             this.homeControl = new RestaurantBooking.HomeControl();
@@ -49,6 +48,7 @@ namespace RestaurantBooking
             this.myRevervationControl = new RestaurantBooking.MyRevervationControl();
             this.profileControl = new RestaurantBooking.ProfileControl();
             this.restaurantControl = new RestaurantBooking.RestaurantControl();
+            this.reviewControl = new RestaurantBooking.ReviewControl();
             this.panelSystem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.panelControl.SuspendLayout();
@@ -64,7 +64,7 @@ namespace RestaurantBooking
             this.buttonHome.Font = new System.Drawing.Font("Harlow Solid Italic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonHome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.buttonHome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonHome.Location = new System.Drawing.Point(5, 300);
+            this.buttonHome.Location = new System.Drawing.Point(5, 250);
             this.buttonHome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonHome.Name = "buttonHome";
             this.buttonHome.Size = new System.Drawing.Size(339, 100);
@@ -85,7 +85,7 @@ namespace RestaurantBooking
             this.buttonSearch.Font = new System.Drawing.Font("Harlow Solid Italic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.buttonSearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonSearch.Location = new System.Drawing.Point(5, 400);
+            this.buttonSearch.Location = new System.Drawing.Point(5, 350);
             this.buttonSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(339, 100);
@@ -106,7 +106,7 @@ namespace RestaurantBooking
             this.buttonReservation.Font = new System.Drawing.Font("Harlow Solid Italic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonReservation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.buttonReservation.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonReservation.Location = new System.Drawing.Point(5, 500);
+            this.buttonReservation.Location = new System.Drawing.Point(5, 450);
             this.buttonReservation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonReservation.Name = "buttonReservation";
             this.buttonReservation.Size = new System.Drawing.Size(339, 100);
@@ -127,13 +127,14 @@ namespace RestaurantBooking
             this.buttonReview.Font = new System.Drawing.Font("Harlow Solid Italic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonReview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.buttonReview.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonReview.Location = new System.Drawing.Point(5, 601);
+            this.buttonReview.Location = new System.Drawing.Point(5, 550);
             this.buttonReview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonReview.Name = "buttonReview";
             this.buttonReview.Size = new System.Drawing.Size(339, 100);
             this.buttonReview.TabIndex = 3;
             this.buttonReview.Text = "Review";
             this.buttonReview.UseVisualStyleBackColor = false;
+            this.buttonReview.Click += new System.EventHandler(this.button_Click);
             this.buttonReview.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
             this.buttonReview.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
@@ -147,7 +148,7 @@ namespace RestaurantBooking
             this.buttonProfile.Font = new System.Drawing.Font("Harlow Solid Italic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.buttonProfile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonProfile.Location = new System.Drawing.Point(5, 700);
+            this.buttonProfile.Location = new System.Drawing.Point(5, 650);
             this.buttonProfile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonProfile.Name = "buttonProfile";
             this.buttonProfile.Size = new System.Drawing.Size(339, 100);
@@ -168,7 +169,7 @@ namespace RestaurantBooking
             this.buttonLogout.Font = new System.Drawing.Font("Harlow Solid Italic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonLogout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.buttonLogout.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonLogout.Location = new System.Drawing.Point(5, 820);
+            this.buttonLogout.Location = new System.Drawing.Point(5, 780);
             this.buttonLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(339, 100);
@@ -185,7 +186,7 @@ namespace RestaurantBooking
             this.wellcome.Font = new System.Drawing.Font("Harlow Solid Italic", 16.2F, System.Drawing.FontStyle.Italic);
             this.wellcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(220)))), ((int)(((byte)(177)))));
             this.wellcome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.wellcome.Location = new System.Drawing.Point(29, 250);
+            this.wellcome.Location = new System.Drawing.Point(29, 200);
             this.wellcome.Name = "wellcome";
             this.wellcome.Size = new System.Drawing.Size(190, 35);
             this.wellcome.TabIndex = 7;
@@ -193,11 +194,9 @@ namespace RestaurantBooking
             // 
             // panelSystem
             // 
-            this.panelSystem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelSystem.AutoSize = true;
             this.panelSystem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(27)))));
             this.panelSystem.Controls.Add(this.pictureBox);
-            this.panelSystem.Controls.Add(this.panel1);
             this.panelSystem.Controls.Add(this.buttonLogout);
             this.panelSystem.Controls.Add(this.wellcome);
             this.panelSystem.Controls.Add(this.buttonProfile);
@@ -205,31 +204,25 @@ namespace RestaurantBooking
             this.panelSystem.Controls.Add(this.buttonHome);
             this.panelSystem.Controls.Add(this.buttonReservation);
             this.panelSystem.Controls.Add(this.buttonSearch);
-            this.panelSystem.Location = new System.Drawing.Point(0, -50);
+            this.panelSystem.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSystem.Location = new System.Drawing.Point(0, 0);
             this.panelSystem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelSystem.Name = "panelSystem";
-            this.panelSystem.Size = new System.Drawing.Size(350, 961);
+            this.panelSystem.Size = new System.Drawing.Size(347, 882);
             this.panelSystem.TabIndex = 1;
             // 
             // pictureBox
             // 
             this.pictureBox.Image = global::RestaurantBooking.Properties.Resources.LogoApp;
             this.pictureBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pictureBox.Location = new System.Drawing.Point(100, 75);
+            this.pictureBox.Location = new System.Drawing.Point(100, 25);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(149, 150);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 8;
             this.pictureBox.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(349, 50);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1149, 972);
-            this.panel1.TabIndex = 3;
+            this.pictureBox.DoubleClick += new System.EventHandler(this.pictureBox_Click);
             // 
             // panelControl
             // 
@@ -239,10 +232,12 @@ namespace RestaurantBooking
             this.panelControl.Controls.Add(this.myRevervationControl);
             this.panelControl.Controls.Add(this.profileControl);
             this.panelControl.Controls.Add(this.restaurantControl);
-            this.panelControl.Location = new System.Drawing.Point(350, 0);
+            this.panelControl.Controls.Add(this.reviewControl);
+            this.panelControl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelControl.Location = new System.Drawing.Point(347, 0);
             this.panelControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl.Name = "panelControl";
-            this.panelControl.Size = new System.Drawing.Size(1200, 900);
+            this.panelControl.Size = new System.Drawing.Size(1190, 882);
             this.panelControl.TabIndex = 2;
             // 
             // loginOrSignupControl
@@ -250,7 +245,7 @@ namespace RestaurantBooking
             this.loginOrSignupControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginOrSignupControl.Location = new System.Drawing.Point(0, 0);
             this.loginOrSignupControl.Name = "loginOrSignupControl";
-            this.loginOrSignupControl.Size = new System.Drawing.Size(1200, 900);
+            this.loginOrSignupControl.Size = new System.Drawing.Size(1190, 882);
             this.loginOrSignupControl.TabIndex = 5;
             // 
             // homeControl
@@ -258,7 +253,7 @@ namespace RestaurantBooking
             this.homeControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homeControl.Location = new System.Drawing.Point(0, 0);
             this.homeControl.Name = "homeControl";
-            this.homeControl.Size = new System.Drawing.Size(1200, 900);
+            this.homeControl.Size = new System.Drawing.Size(1190, 882);
             this.homeControl.TabIndex = 4;
             // 
             // searchControl
@@ -266,7 +261,7 @@ namespace RestaurantBooking
             this.searchControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchControl.Location = new System.Drawing.Point(0, 0);
             this.searchControl.Name = "searchControl";
-            this.searchControl.Size = new System.Drawing.Size(1200, 900);
+            this.searchControl.Size = new System.Drawing.Size(1190, 882);
             this.searchControl.TabIndex = 3;
             // 
             // myRevervationControl
@@ -274,7 +269,7 @@ namespace RestaurantBooking
             this.myRevervationControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.myRevervationControl.Location = new System.Drawing.Point(0, 0);
             this.myRevervationControl.Name = "myRevervationControl";
-            this.myRevervationControl.Size = new System.Drawing.Size(1200, 900);
+            this.myRevervationControl.Size = new System.Drawing.Size(1190, 882);
             this.myRevervationControl.TabIndex = 2;
             // 
             // profileControl
@@ -282,7 +277,7 @@ namespace RestaurantBooking
             this.profileControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.profileControl.Location = new System.Drawing.Point(0, 0);
             this.profileControl.Name = "profileControl";
-            this.profileControl.Size = new System.Drawing.Size(1200, 900);
+            this.profileControl.Size = new System.Drawing.Size(1190, 882);
             this.profileControl.TabIndex = 1;
             // 
             // restaurantControl
@@ -290,15 +285,22 @@ namespace RestaurantBooking
             this.restaurantControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.restaurantControl.Location = new System.Drawing.Point(0, 0);
             this.restaurantControl.Name = "restaurantControl";
-            this.restaurantControl.Size = new System.Drawing.Size(1200, 900);
+            this.restaurantControl.Size = new System.Drawing.Size(1190, 882);
             this.restaurantControl.TabIndex = 0;
+            // 
+            // reviewControl
+            // 
+            this.reviewControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reviewControl.Location = new System.Drawing.Point(0, 0);
+            this.reviewControl.Name = "reviewControl";
+            this.reviewControl.Size = new System.Drawing.Size(1190, 882);
+            this.reviewControl.TabIndex = 6;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1532, 903);
             this.Controls.Add(this.panelControl);
@@ -312,6 +314,7 @@ namespace RestaurantBooking
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.panelControl.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -326,7 +329,6 @@ namespace RestaurantBooking
         private Label wellcome;
         private Panel panelSystem;
         private PictureBox pictureBox;
-        private Panel panel1;
         public Panel panelControl;
         internal MyRevervationControl myRevervationControl;
         internal ProfileControl profileControl;
@@ -334,6 +336,8 @@ namespace RestaurantBooking
         internal LoginOrSignupControl loginOrSignupControl;
         internal HomeControl homeControl;
         internal SearchControl searchControl;
+        internal ReviewControl reviewControl;
+        //private Panel panel1;
     }
 }
 

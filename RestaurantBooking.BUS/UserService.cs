@@ -27,25 +27,21 @@ namespace RestaurantBooking.BUS
                 return 1;
             return _context.RESERVATIONs.Max(r => r.ID_RESERVATION) + 1;
         }
+        public bool CheckReservation(RESERVATION newReservation)
+        {
+            return _context.RESERVATIONs.Any(r =>
+                    r.ID_RESERVATION == newReservation.ID_RESERVATION &&
+                    r.ID_RES == newReservation.ID_RES &&
+                    r.ID_USER == newReservation.ID_USER);
+        }
         public void AddReservation(RESERVATION reservation)
         {
             _context.RESERVATIONs.Add(reservation);
             _context.SaveChanges();
         }
-        public void UpdateReservation(RESERVATION reservation)
+        public List<REVIEW> listReviews()
         {
-            _context.Entry(reservation).State = EntityState.Modified;
-            _context.SaveChanges();
+            return _context.REVIEWs.ToList();
         }
-        public void DeleteReservation(RESERVATION reservation)
-        {
-            _context.RESERVATIONs.Remove(reservation);
-            _context.SaveChanges();
-        }
-        public List<RESERVATION> GetReservations(string userId)
-        {
-            return _context.RESERVATIONs.Where(r => r.ID_USER == userId).ToList();
-        }
-
     }
 }

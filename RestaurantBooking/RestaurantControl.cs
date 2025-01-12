@@ -19,8 +19,7 @@ namespace RestaurantBooking
     public partial class RestaurantControl : UserControl
     {
         private readonly RestaurantService _restaurantService = new RestaurantService();
-        private readonly UserService _userService = new UserService();
-        RESTAURANT mainRes;
+        public static RESTAURANT _mainRes;
         public RestaurantControl()
         {
             InitializeComponent();
@@ -38,7 +37,7 @@ namespace RestaurantBooking
                 foreach (MENUITEM item in menuItems)
                 {
                     // Tạo một ItemControl để hiển thị thông tin món ăn
-                    ItemControl itemControl = new ItemControl();
+                    ItemWidget itemControl = new ItemWidget();
 
                     // Cập nhật thông tin món ăn vào ItemControl
                     itemControl.labelNameItem.Text = item.ITEM;  // Giả sử 'ITEM' là tên món ăn
@@ -57,8 +56,6 @@ namespace RestaurantBooking
                 //MessageBox.Show($"Lỗi khi tải dữ liệu món ăn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
 
         private void register_Back_Click(object sender, EventArgs e)
         {
@@ -81,7 +78,7 @@ namespace RestaurantBooking
             labelClosing.Text = restaurant.CLOSE.ToString("HH:mm"); // TextBox hiển thị giờ đóng cửa
 
             LoadAvatar(restaurant.ID_RES);
-            mainRes = restaurant;
+            _mainRes = restaurant;
         }
         private void LoadAvatar(string idRestaurant)
         {
@@ -132,90 +129,19 @@ namespace RestaurantBooking
 
         private void buttonReserve_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Show date selection dialog
-                using (var bookingDate = new bookingDate())
-                {
-                    if (bookingDate.ShowDialog() != DialogResult.OK)
-                    {
-                        return; // User cancelled
-                    }
-
-                    // Extract and validate the values
-                    string date = ExtractLastValue(bookingDate.select_Date.Text);
-                    string people = ExtractLastValue(bookingDate.select_People.Text);
-                    string time = ExtractLastValue(bookingDate.select_Time.Text);
-
-                    // Validate inputs
-                    if (string.IsNullOrEmpty(date) || string.IsNullOrEmpty(time) || string.IsNullOrEmpty(people))
-                    {
-                        throw new ArgumentException("Please select all required fields (date, time, and number of people).");
-                    }
-
-                    // Parse the date and time
-                    if (!DateTime.TryParseExact(
-                        $"{DateTime.Now.Year}-{date.Trim()} {time.Trim()}",
-                        "yyyy-MM-dd HH:mm",
-                        CultureInfo.InvariantCulture,
-                        DateTimeStyles.None,
-                        out DateTime reservationDate))
-                    {
-                        throw new FormatException("Invalid date or time format.");
-                    }
-
-                    // Validate reservation is not in the past
-                    if (reservationDate < DateTime.Now)
-                    {
-                        throw new ArgumentException("Reservation date cannot be in the past.");
-                    }
-
-                    // Validate number of guests
-                    if (!int.TryParse(people, out int numberOfGuests) || numberOfGuests <= 0)
-                    {
-                        throw new ArgumentException("Please enter a valid number of guests.");
-                    }
-
-                    // Create new reservation
-                    var reservation = new RESERVATION
-                    {
-                        ID_RESERVATION = _userService.GetNextReservationId(),
-                        ID_RES = mainRes.ID_RES,
-                        ID_USER = MainForm._mainUser.ID_USER,
-                        DATE_RESERVATION = reservationDate,
-                        NUMBERS_OF_GUEST = numberOfGuests,
-                        NOTE = "Reserved through application"
-                    };
-
-                    // Save to database
-                    _userService.AddReservation(reservation);
-                    MessageBox.Show(
-                        $"Reservation successful!\nDate: {date}\nTime: {time}\nPeople: {people}",
-                        "Success",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    "Error making reservation: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-            }
+            BookingDate bookingDate = new BookingDate();
+            bookingDate.ShowDialog();
+            Confirm confirm = new Confirm();
+            confirm.labelDate.Text = bookingDate.select_Date.Text;
+            confirm.labelTime.Text = bookingDate.select_Time.Text;
+            confirm.labelPeople.Text = bookingDate.select_People.Text;
+            confirm.labelBooker.Text = MainForm._mainUser.NAME;
+            confirm.labelNameRes.Text = labelNameRes.Text;
+            confirm.ShowDialog();
         }
-
-        // Helper method to safely extract the last value after a space
-        private string ExtractLastValue(string input)
+        public static string GetMainRes()
         {
-            if (string.IsNullOrEmpty(input))
-                return string.Empty;
-
-            int lastSpaceIndex = input.LastIndexOf(' ');
-            return lastSpaceIndex >= 0 ? input.Substring(lastSpaceIndex + 1).Trim() : input.Trim();
+            return _mainRes.ID_RES;
         }
     }
 }
